@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: vault-dev
+  namespace: vault-dev
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:dev-*
+spec:
+  releaseName: dev-dev
+  chart:
+    git: git@github.com:helm/charts.git
+    path: incubator/vault
+    ref: master
+  values: {}
